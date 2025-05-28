@@ -1,12 +1,21 @@
-# React + Vite
+## 기본 요구 사항
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [x] Todo 생성 / 조회 / 수정 / 삭제 (CRUD) 기능을 구현하세요.
+- [x] 현재 시간 표시, 타이머, 스톱워치 중 하나 이상의 기능을 구현하세요.
+- [x] 랜덤 명언을 표시할 수 있는 컴포넌트를 만드세요.
+- [ ] useState, useEffect, useRef를 각각 한 번 이상 사용하세요.
+- [x] 자유롭게 적용해보고 싶은 CSS를 작성해보세요.
 
-Currently, two official plugins are available:
+## 심화 요구 사항
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [ ] 기존 CRUD를 useReducer 와 dispatch 를 활용하여 구현하세요.
+- [x] 투두 리스트를 Check(완료 처리) 할 수 있도록 구현하세요. 완료 처리된 리스트는 다른 스타일로 보여야 합니다.
+- [ ] 미완료 / 완료 여부를 필터링 가능하고, 투두리스트 검색이 가능해야 합니다.
+  - 이 두가지의 필터링은 중첩해서 사용할 수 있습니다.
+- [x] 투두 리스트를 수정 할 수 있도록 구현하세요. input이나 prompt가 아닌, 모달을 생성하여 수정을 구현해보세요.
+- [ ] (선택)드래그 & 드롭을 구현하여 투두 리스트의 순서를 변경할 수 있어야 합니다. 라이브러리 없이 구현해보세요!
 
-## Expanding the ESLint configuration
+## 비고
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 기본 요구 사항을 참고하여 프로젝트를 진행할 때는 useRef를 사용할 마땅한 요소가 없다고 생각해서 건너뛰었는데, 이후 모달을 추가하게 되면서 모달의 input에 useRef를 이용해 수정 예정
+- 투두 리스트 완료 처리는 기본 요구 사항에서 미리 완료함
