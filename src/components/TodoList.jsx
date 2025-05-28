@@ -62,28 +62,39 @@ const TodoButton = styled.button`
   flex-shrink: 0;
   padding: 0;
   border: none;
-  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+`;
+
+const IconButton = styled(TodoButton)`
+  background-color: transparent;
 
   img {
     width: 1rem;
   }
 `;
 
+const AddButton = styled(TodoButton)`
+  background-color: #af79fa;
+  color: #fff;
+  font-size: 0.875rem;
+  padding: 0.25rem 1.2rem;
+  border-radius: 0.8rem;
+`;
+
 function TodoList() {
   const [todos, setTodos] = useState([
     { id: 1, content: "리액트 공부하기", isDone: false },
     { id: 2, content: "투두리스트 만들기", isDone: true },
-    { id: 3, content: "저녁 먹기", isDone: false },
+    { id: 3, content: "운동하기", isDone: false },
     {
       id: 4,
-      content: "일찍 자고 일찍 일어나기 투두투두투두투두",
+      content: "잠 자기",
       isDone: false,
     },
-    { id: 5, content: "맛있는거 먹기", isDone: false },
+    { id: 5, content: "저녁으로 맛있는거 먹기", isDone: false },
   ]);
 
   const handleToggleTodo = (id) => {
@@ -133,17 +144,17 @@ function TodoList() {
             />
             <TodoContent isDone={todo.isDone}>{todo.content}</TodoContent>
             <ButtonsWrapper>
-              <TodoButton onClick={() => handleEditTodo(todo.id)}>
+              <IconButton onClick={() => handleEditTodo(todo.id)}>
                 <img src={edit} />
-              </TodoButton>
-              <TodoButton onClick={() => handleDeleteTodo(todo.id)}>
+              </IconButton>
+              <IconButton onClick={() => handleDeleteTodo(todo.id)}>
                 <img src={trash} />
-              </TodoButton>
+              </IconButton>
             </ButtonsWrapper>
           </TodoLabel>
         ))}
       </TodosWrapper>
-      <button onClick={handleAddTodo}>추가하기</button>
+      <AddButton onClick={handleAddTodo}>추가하기</AddButton>
     </Container>
   );
 }

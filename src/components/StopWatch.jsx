@@ -26,11 +26,10 @@ const StopWatchTime = styled.div`
 
 const ButtonsWrapper = styled.div`
   width: 100%;
-  display flex;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
 `;
 
 const StopWatchButton = styled.button`
