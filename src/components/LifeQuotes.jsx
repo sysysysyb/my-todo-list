@@ -10,6 +10,7 @@ const Container = styled.div`
   transition: background-color 0.5s ease-in-out;
   cursor: pointer;
   user-select: none;
+  box-shadow: 0 0 8px 2px #00000025;
 
   &:hover {
     background-color: rgb(231, 220, 245);

@@ -10,6 +10,8 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px 2px #00000025;
 `;
 
 const Title = styled.div`

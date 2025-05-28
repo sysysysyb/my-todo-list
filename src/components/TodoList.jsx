@@ -13,6 +13,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  box-shadow: 0 0 8px 2px #00000025;
 `;
 
 const TodosWrapper = styled.div`

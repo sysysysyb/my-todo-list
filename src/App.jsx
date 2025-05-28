@@ -9,14 +9,13 @@ import StopWatch from "./components/StopWatch";
 const AppContainer = styled.div`
   width: 30rem;
   height: 20rem;
-  background-color: skyblue;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 0.8rem;
 `;
 
 const ContentsWrapper = styled.section`
-  background-color: purple;
   flex: 1;
   display: flex;
   gap: 0.8rem;
@@ -28,20 +27,28 @@ const Content = styled.article`
   gap: 0.4rem;
 `;
 
+const LeftContent = styled(Content)`
+  width: 70%;
+`;
+
+const RightContent = styled(Content)`
+  width: 30%;
+`;
+
 function App() {
   return (
     <AppContainer>
       <Header />
       <ContentsWrapper>
-        <Content>
+        <LeftContent>
           <LifeQuotes />
           <TodoList />
-        </Content>
-        <Content>
+        </LeftContent>
+        <RightContent>
           {/* <Clock /> */}
           <Timer />
           <StopWatch />
-        </Content>
+        </RightContent>
       </ContentsWrapper>
     </AppContainer>
   );

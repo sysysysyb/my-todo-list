@@ -10,6 +10,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
+  box-shadow: 0 0 8px 2px #00000025;
 `;
 
 const Title = styled.div`
