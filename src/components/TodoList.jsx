@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import trash from "../images/icon_trash.svg";
 import edit from "../images/icon_edit.svg";
+import TodoModal from "./TodoModal";
 
 const Container = styled.div`
   padding: 1rem;
@@ -96,6 +97,7 @@ function TodoList() {
     },
     { id: 5, content: "저녁으로 맛있는거 먹기", isDone: false },
   ]);
+  // const [isModalOpen, setModalOpen] = useState(false);
 
   const handleToggleTodo = (id) => {
     setTodos((prevTodos) => {
@@ -105,17 +107,15 @@ function TodoList() {
     });
   };
 
-  const handleAddTodo = () => {
-    const newTodo = window.prompt("✨ 새로운 할 일을 입력해주세요!");
-    if (!newTodo) return;
+  const handleAddTodo = (newContent) => {
+    if (!newContent) return;
     setTodos((prevTodos) => [
-      { id: Date.now(), content: newTodo, isDone: false },
+      { id: Date.now(), content: newContent, isDone: false },
       ...prevTodos,
     ]);
   };
 
-  const handleEditTodo = (id) => {
-    const newContent = window.prompt("✏️ 수정된 할 일을 입력해주세요!");
+  const handleEditTodo = (newContent, id) => {
     if (!newContent) return;
     setTodos((prevTodos) =>
       prevTodos.map((todo) => {
@@ -132,6 +132,20 @@ function TodoList() {
     });
   };
 
+  const {
+    isModalOpen: isAddModalOpen,
+    setModalOpen: setAddModalOpen,
+    handleConfirm: handleAddConfirm,
+  } = useModal(handleAddTodo);
+
+  const {
+    isModalOpen: isEditModalOpen,
+    setModalOpen: setEditModalOpen,
+    todoId,
+    setTodoId,
+    handleConfirm: handleEditConfirm,
+  } = useModal(handleEditTodo);
+
   return (
     <Container>
       <TodosWrapper>
@@ -144,7 +158,11 @@ function TodoList() {
             />
             <TodoContent isDone={todo.isDone}>{todo.content}</TodoContent>
             <ButtonsWrapper>
-              <IconButton onClick={() => handleEditTodo(todo.id)}>
+              <IconButton
+                onClick={() => {
+                  setEditModalOpen((prev) => !prev);
+                  setTodoId(todo.id);
+                }}>
                 <img src={edit} />
               </IconButton>
               <IconButton onClick={() => handleDeleteTodo(todo.id)}>
@@ -154,9 +172,37 @@ function TodoList() {
           </TodoLabel>
         ))}
       </TodosWrapper>
-      <AddButton onClick={handleAddTodo}>추가하기</AddButton>
+      <AddButton onClick={() => setAddModalOpen((prev) => !prev)}>
+        추가하기
+      </AddButton>
+      <>
+        <TodoModal
+          isModalOpen={isAddModalOpen}
+          setModalOpen={setAddModalOpen}
+          onConfirm={handleAddConfirm}
+          text="새로운"
+        />
+        <TodoModal
+          isModalOpen={isEditModalOpen}
+          setModalOpen={setEditModalOpen}
+          onConfirm={handleEditConfirm}
+          todoId={todoId}
+          text="수정된"
+        />
+      </>
     </Container>
   );
 }
+
+const useModal = (handleTodo) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [todoId, setTodoId] = useState(null);
+
+  const handleConfirm = (newContent, id = null) => {
+    handleTodo(newContent, id);
+  };
+
+  return { isModalOpen, setModalOpen, todoId, setTodoId, handleConfirm };
+};
 
 export default TodoList;
