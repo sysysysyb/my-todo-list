@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
+import Header from "./components/Header";
 
 const AppContainer = styled.div`
   width: 30rem;
@@ -10,8 +11,8 @@ const AppContainer = styled.div`
 function App() {
   return (
     <AppContainer>
-      {/* <Header />
-      <LifeQuotes />
+      <Header />
+      {/* <LifeQuotes />
       <TodoList />
       <Timer />
       <StopWatch /> */}
